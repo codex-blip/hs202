@@ -1,0 +1,137 @@
+PROMPT FOR PRISM — PROJECT REPORT
+
+Write a complete academic project report for the project described below. Use the attached website screenshots as visual context and the project facts in this prompt. The report should be approximately 2,500–4,000 words, excluding references if your convention allows. Use clear, formal, accessible language suitable for a college project submission. Do not write a generic report: connect each section to the actual Sahakar Sahayak prototype and its documented limitations.
+
+IMPORTANT ACCURACY RULES
+- Clearly distinguish what is implemented in the current prototype from what is proposed future work. Do not describe planned features as already deployed.
+- The project documents do not record a completed survey, interview, key-informant interview (KII), focus group discussion (FGD), pilot, or user study. Do not invent participants, results, statistics, quotes, or field findings. Explain that the present problem identification is based on reviewing the project brief, README, and working prototype; present surveys/KIIs/FGDs only as recommended validation activities unless the group supplies actual evidence.
+- The prototype’s scheme and grievance material is static demonstration content, not a live government database. Its presence does not establish that information is current or independently verified. Chat is AI-generated and general chat currently does not return verified citations. Do not promise guaranteed accuracy, eligibility decisions, official status, or case resolution.
+- Do not claim that the project has already improved access, reduced errors, increased uptake, or produced measurable impact. These are intended outcomes to evaluate, not proven results.
+- Do not invent team members’ skills, experience, or completed work. Use the roster below and propose a fair division of work only as a suggested plan that each member must confirm. Mark expertise as “to be confirmed by the student” where no self-reported evidence exists.
+- Check current domain developments and all references against authoritative primary sources before making time-sensitive claims. Do not fabricate citations, dates, source titles, or statistics. Treat URLs and source names below as a starting point, not proof that the linked information remains current. Identify the date on which you actually verify a source.
+- The attached screenshots show a local development/demo website. Label them as prototype interface screenshots, not proof of production deployment or real service outcomes.
+
+PROJECT CONTEXT
+
+Project name: Sahakar Sahayak
+Suggested report title: “Sahakar Sahayak: A Multilingual Cooperative-Services Information and Guidance Assistant”
+
+Purpose: Sahakar Sahayak is a public-interest prototype intended to make information about cooperatives and related agricultural services easier to discover, understand, and navigate. It aims to help users explore cooperative governance, Primary Agricultural Credit Society (PACS) services, crop insurance (including PMFBY), financial literacy, government schemes, legal information, and grievance routes. It is an informational guide, not a government service, legal/financial adviser, eligibility assessor, or complaint-submission authority.
+
+Problem framing: relevant cooperative and agricultural information can be difficult for users to find, interpret, verify, and navigate across topics, languages, jurisdictions, and official channels. Present this as the project’s identified design problem and rationale, not as a quantified or field-validated claim. Explain that any claims about the severity or prevalence of the problem require user research and authoritative evidence.
+
+CURRENT PROTOTYPE — IMPLEMENTED CAPABILITIES
+- React and TypeScript frontend built with Vite; FastAPI backend in Python.
+- Multilingual AI chat can answer in the latest user message’s language when the configured model supports it. Language quality is model-dependent, not guaranteed.
+- Interface language switching is currently documented for English, Hindi, and Punjabi.
+- Topic browsing for cooperative governance, crop insurance/PMFBY, PACS and cooperative services, financial literacy, schemes, legal information, and grievances.
+- Scheme-guidance wizard uses demonstration records to show example requirements, documents, citations, limitations, and suggested next steps. It does not determine eligibility.
+- Grievance page provides example routes and preparation checklists; it does not file, adjudicate, or track complaints.
+- Voice input is transcribed through Sarvam; the user can review the transcript before sending it. Sarvam text-to-speech can play assistant answers. The documentation says playback supports 11 languages and text up to 2,500 characters; audio recording and upload limits are documented in the README.
+- Recent conversation history is stored in browser local storage. Up to 12 recent turns may be sent as chat context.
+- Users can attach up to five PDF/DOCX documents of up to 20 MB each per conversation. PDF and DOCX text are extracted and indexed in local SQLite FTS5. Chat retrieves up to five matching chunks with a combined 9,000-character limit and sends them as untrusted context. Answers can cite uploaded filenames and PDF page numbers when available. This is basic lexical retrieval over user-provided documents, not a maintained official-source knowledge base. Scanned-PDF OCR depends on separately installed Tesseract and language data.
+- Frontend mock mode is available. The project can also use its FastAPI endpoints and Sarvam, subject to configuration.
+- Useful API routes documented in README include /api/health, /api/chat, /api/documents, /api/audio/transcriptions, /api/audio/speech, /api/schemes/guidance, /api/grievances, and /api/sources.
+
+KEY LIMITATIONS AND PLANNED WORK
+- There is no maintained, human-reviewed official knowledge base, source-ingestion/review process, jurisdiction/date-aware retrieval, multilingual semantic/hybrid search, source expiry management, or verified citation system for general chat.
+- Scheme and grievance records are static examples. Current rules, deadlines, local eligibility, routes, or availability must be checked with the responsible official authority.
+- General chat responses are AI-generated and may be incorrect. The user must verify consequential information with official sources or qualified professionals.
+- The prototype does not have user authentication. The README warns against exposing the backend publicly with sensitive uploads until document routes are protected by authenticated user ownership.
+- User interface translations and speech quality/accessibility across languages and devices remain areas for improvement. Low-bandwidth and assisted-use support, user feedback for outdated answers, and stronger accessibility are planned.
+- The planned source-grounded approach is to create an approved source catalog with issuing authority, canonical URL, jurisdiction, language, publication/effective dates, last-checked date, reviewer, and active/expired status; ingest approved material with page/section boundaries; start with evaluated FTS5 and add multilingual embeddings only if evaluation demonstrates a need; filter by jurisdiction/date; keep citations tied to retrieved metadata; instruct the model to treat documents as untrusted; abstain when evidence is insufficient; and maintain a reviewed question set and update cadence.
+- Keep uploaded-document retrieval separate from any future trusted public-source retrieval. Do not imply that embedding/vector infrastructure is currently part of the project.
+
+TECHNICAL AND DOMAIN CONTEXT
+- Frontend: React, TypeScript, Vite, React Router, Tailwind-based styling/components.
+- Backend: FastAPI/Python.
+- AI/speech integration: Sarvam Token Factory chat (documented default model sarvam-105b), Saaras transcription, and Bulbul speech generation; API key is configured server-side.
+- Current document retrieval: PDF/DOCX extraction, chunking, SQLite FTS5 lexical search; no semantic/vector dependency is currently documented.
+- Prototype citations/demo source references include the PMFBY official portal, Ministry of Cooperation PACS computerization guidelines, India Code’s Multi-State Co-operative Societies Act, Ministry of Cooperation initiatives/NCCT, and Press Information Bureau. The source list is provided in the project README and demo data. Verify each relevant source directly before citing it as current.
+- Describe broader current developments in cooperative digitization, PACS computerization, digital public information, multilingual/voice interfaces, and AI/RAG only with reliable current primary/authoritative sources. Explain both opportunity and risk: language and discovery benefits versus stale information, hallucinations, privacy, accessibility, and accountability.
+
+GROUP ROSTER
+There are 10 students. Names and IDs transcribed from the user-provided roster image:
+1. Pratham Warpa — 2024csb1142
+2. Aman Raj — 2024csb1057
+3. Md Ammar — 2024csb1131
+4. Jatin — 2024mcb1296
+5. Satyam Saini — 2024mcb1310
+6. Mohammad Ali — 2024csb1132
+7. Pratyush Ranjan — 2024csb1143
+8. Manan Kumar — 2024csb1130
+9. Chuku Teki — 2024ceb1029
+10. Nongmaithem Hans — 2024aib1011
+Note: the final student’s name is visibly cut off at the right edge of the supplied roster image. Preserve the visible text and ask the group to confirm the full spelling before submission. Preserve student IDs exactly.
+
+For the expertise section, include a per-student table with name, expertise/skills, and proposed contribution. Since no individual skills were supplied, clearly mark skills as “to be confirmed by student”; do not infer them from names or IDs. You may suggest workstreams (for example frontend/UI, backend/API, document retrieval, source verification, localization/accessibility, testing/evaluation, research/writing, references/editing), but label role allocation as proposed and seek member confirmation.
+
+For the individual-contribution section, make a balanced proposed contribution table covering all ten students. Assign distinct but coordinated deliverables, such as project coordination and requirements; UI documentation; frontend interaction review; API/backend review; document retrieval and RAG analysis; source catalog and verification; multilingual/accessibility review; test plan and evaluation metrics; constraints/implementation plan; and report integration/references/presentation. Avoid stating that any work has already been completed. Ask the team to replace the proposed assignments with actual contributions before submission.
+
+WEBSITE SCREENSHOTS
+Use the five attached PNG files as the website screenshot attachments. They are in the project folder `website-screenshots`:
+1. `01-home.png` — homepage and sample PMFBY answer card.
+2. `02-topics.png` — topic explorer.
+3. `03-schemes.png` — scheme guidance interface.
+4. `04-about.png` — “How it works” explanation and prototype flow.
+5. `05-chat.png` — chat interface.
+Refer to these in a short “Prototype screenshots” note or appendix with figure captions. Mention that these are local prototype/demo screens and that visible sample content is not verified live data. Do not call the supplied roster image a website screenshot.
+
+REQUIRED REPORT STRUCTURE
+Use this order and include the listed subsections. Preserve the full coverage even if some topics are cross-referenced.
+
+1. Title
+   Include project title, group of 10, and a clean space/placeholders for institution, course, faculty guide, and submission date if these details are unavailable. Do not invent them.
+
+2. Abstract / Summary
+   Summarize the problem, project, methods/evidence actually available, intervention, key limitations, and expected—not proven—outcomes.
+
+3. Definition of the Problem
+   3.1 Problem statement
+   3.2 Origin/identification of the problem
+   3.3 Methodology adopted to identify the problem (describe the existing documentation/prototype review honestly; clearly mark any proposed surveys, discussions, KII, or FGD as future validation, not completed research)
+   3.4 Detailed description of the identified problem
+   3.5 Current developments in the domain
+   3.6 Need and significance of resolving the problem
+
+4. Aims / Objectives / Goals
+   Provide specific, realistic objectives tied to reducing the information-access and navigation gap. Distinguish product objectives from evaluation measures.
+
+5. Tools and Techniques (Interventions)
+   Explain existing technologies and the proposed human-reviewed source, retrieval, multilingual, safety, and evaluation interventions. Explicitly label current versus proposed.
+
+6. Detailed Work Plan / Technological Interventions
+   Give phased activities, deliverables, dependencies, and a reasonable timeline (for example, week-based phases). Present it as a proposed plan, not completed work. Cover needs assessment, source selection, implementation, testing, revision, and handover/maintenance.
+
+7. Novelty / Innovation of the Proposed Interventions
+   Explain the value of combining plain-language cooperative guidance, multilingual/voice interaction, transparent source/date metadata, jurisdiction-aware retrieval, and cautious non-authoritative guidance. Do not claim global or first-of-its-kind novelty without evidence.
+
+8. Approaches that can be taken to Implement Intervention Plans
+   Describe implementation/governance approach, stakeholders, staged pilot, source approval and update process, user validation, deployment considerations, and monitoring.
+
+9. Possible Constraints and Barriers to Implementation; Design Issues
+   Address source freshness/authority, state-level variation, multilingual quality, AI hallucinations, digitization/OCR quality, connectivity/device constraints, usability/accessibility, privacy/security/authentication, API costs/availability, legal/ethical boundaries, staffing, and ongoing maintenance. Pair major risks with mitigations.
+
+10. Expertise Available with Each Student to Contribute to the Development of the Intervention
+   Include all ten students in a table. Mark unknown skills for confirmation; offer suggested areas of contribution without implying skills are known.
+
+11. Expected Outcomes
+   State expected deliverables and benefits as future outcomes. Suggest measurable evaluation indicators (e.g., source correctness, retrieval relevance, citation accuracy, answer abstention when unsupported, task completion, language comprehension, accessibility, latency, and user feedback) without inventing target results or baseline values.
+
+12. Suggested Plan of Action for Utilization of the Expected Outcome from the Work
+   Explain how the prototype, source catalog, guidance materials, test set, and feedback process could be used, maintained, piloted, and handed over responsibly. Include official-channel verification and sustainability.
+
+13. Conclusion
+   Summarize contribution, public-interest potential, evidence limitations, and next steps.
+
+14. Contribution of Each Student of the Group to Complete the Assignment
+   Include a proposed, balanced, individual task allocation for all ten students with concrete deliverables. Clearly label it provisional and require confirmation against actual contributions before submission.
+
+PRESENTATION AND CITATION REQUIREMENTS
+- Keep the report within approximately 2,500–4,000 words and include a word-count estimate.
+- Use headings/subheadings, concise paragraphs, and tables where they improve readability.
+- Include a reference list with links to official/primary sources and appropriate technical documentation. Cite claims in the report consistently using one citation style.
+- Prefer official government portals, laws, policy/guideline documents, and primary project documentation. For AI/RAG technical statements, cite authoritative technical sources.
+- Clearly mark assumptions, proposed activities, and unverified claims. Do not turn suggested methods or role allocations into claims of completed work.
+- Add captions for the five attached screenshots and explain that they show the current frontend demo, not operational outcomes.
+- Do not include private keys, credentials, or personal data beyond the student names and IDs supplied for this assignment.
